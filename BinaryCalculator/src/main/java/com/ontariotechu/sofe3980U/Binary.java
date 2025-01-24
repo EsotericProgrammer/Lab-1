@@ -147,6 +147,11 @@ public class Binary
 
 		//Make both lengths of strings equal
 		int maxLength = Math.max(num1.number.length(), num2.number.length());
+		
+		if(num1.number.length() > num2.number.length())
+		{
+
+		}
         a = String.format("%" + maxLength + "s", num1.number).replace(' ', '0');
         b = String.format("%" + maxLength + "s", num2.number).replace(' ', '0');
 
@@ -183,18 +188,17 @@ public class Binary
 	{
         String result = "0";
 
-        // Loop through each bit of the second binary number
         for (int i = num2.number.length() - 1; i >= 0; i--)
 		{
-            // If the current bit in bin2 is 1, add shifted bin1 to the result
             if (num2.number.charAt(i) == '1')
 			{
-                String shiftedNum1 = num1.number + "0".repeat(num2.number.length() - 1 - i); // Shift num2 to the left
+				//Shift num2 to the left
+                String shiftedNum1 = num1.number + "0".repeat(num2.number.length() - 1 - i);
 
 				Binary a = new Binary(result);
 				Binary b = new Binary(shiftedNum1);
 
-                result = add(a, b).number; // Add the shifted bin1 to the result
+                result = add(a, b).number;
             }
         }
 
